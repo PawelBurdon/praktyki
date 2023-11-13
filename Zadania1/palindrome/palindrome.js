@@ -1,16 +1,15 @@
-function sprawdz() {
-    const text = document.getElementById('text').value;
-    const resultElement = document.getElementById('wynik');
+const palindrome = () => {
+    const tekst = document.getElementById('inp1').value;
+    const wynik = document.getElementById('wynik');
+    let reverse = '';
 
-    if (palindrome(text)) {
-        resultElement.innerHTML = "To jest palindrom";
-    } else {
-        resultElement.innerHTML = "To nie jest palindrom";
+    for (let i = tekst.length - 1; i >= 0; i--) {
+        reverse += tekst[i];
     }
-}
 
-function palindrome(str) {
-    str = str.replace(/ /g, "").toLowerCase();
-    const reversedStr = str.split("").reverse().join("");
-    return str === reversedStr;
+    if (tekst == reverse) {
+        wynik.innerHTML = 'To jest palindrom';
+    } else {
+        wynik.innerHTML = 'To nie jest palindrom';
+    }
 }

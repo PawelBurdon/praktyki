@@ -22,7 +22,7 @@ function calculate() {
 
         case '4':
             if(number1 === 0 || number2 === 0){
-                wynik1.innerHTML = "Nie mozna dzielic przez 0"
+                wynik1.innerHTML = "Cos zle podanie"
             }else{
                 x = number1 / number2
             }
