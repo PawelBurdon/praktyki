@@ -1,0 +1,23 @@
+<html>
+<head>
+    <title>Kalkulator</title>
+</head>
+<body>
+        <form>
+            <input type="text" id="num1" required ><br>
+
+            <select id="wybor" required>
+                <option value="1">dodawanie</option>
+                <option value="2">odejmowanie</option>
+                <option value="3">mnozenie</option>
+                <option value="4">dzielenie</option>
+            </select><br>
+
+            <input type="text" id="num2" required><br>
+
+            <button type="button" onclick="calculate()">Oblicz</button>
+        </form>
+        <p>Wynik: <span id="wynik"></span></p>
+    <script src="script.js"></script>
+    </body>
+</html>
