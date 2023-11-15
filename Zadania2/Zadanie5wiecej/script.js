@@ -22,3 +22,7 @@ const mapaPotega = (tab) => tab.map((element) => Math.pow(element, 2) + 3);
 // Zadania dodatkowe
 const parzyste = (tab) => tab.filter((element) => element % 2 == 0);
 console.log(parzyste(numbers));
+
+const min = (tab) => tab.reduce((res, ele) => res < ele ? res : ele)
+    console.log(min(numbers));
+
