@@ -1,0 +1,45 @@
+.search{
+    padding: 5px;
+    font-size: 20px;
+    margin-top: 5%;
+}
+
+button {
+    padding: 10px 8px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: rgb(0, 174, 255);
+    margin-top: 5%;
+}
+
+.btn {
+    color: white;
+    background-color: rgb(0, 174, 255);
+    height: auto;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover{
+    background-color: rgb(0, 174, 255);
+}
+
+.movie img {
+    width: 100%;
+    height: auto;
+}
+
+.topMovies {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.moviePhoto{
+    text-align: center;
+}
+
+.moviePhoto img {
+    width: 150px;
+    border-radius: 8px;
+}
