@@ -1,3 +1,7 @@
+//piekny kod w typescript
+// let message: string = 'Hello, World!';
+// console.log(message);
+
 const API_KEY = '2e75f0b8169c11f38331f670cd8f9f51';
 
 	const searchButtonTitle = document.getElementById('searchButtonTitle');
@@ -30,8 +34,6 @@ const searchMovieByTitle = (query) => {
 };
 
 const displayMoviesTitle = (movies) => {
-
-
 		
 	movies.forEach(movie => {
 		if (movie.poster_path) {
