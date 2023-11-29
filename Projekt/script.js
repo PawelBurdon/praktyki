@@ -9,7 +9,7 @@ const API_KEY = '2e75f0b8169c11f38331f670cd8f9f51';
 	let genreValue = 0;
 
 	
-	
+//wyszykiwanie po tytule
 const searchMovieByTitle = (query) => {
 	let url = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${query}`;
 	
@@ -30,6 +30,8 @@ const searchMovieByTitle = (query) => {
 };
 
 const displayMoviesTitle = (movies) => {
+
+
 		
 	movies.forEach(movie => {
 		if (movie.poster_path) {
@@ -63,6 +65,8 @@ searchButtonTitle.addEventListener('click', () => {
 	searchMovieByTitle(query);
 });
 
+
+//wyszukiwanie po gatunek
 const searchMovieByGenre = (genre) => {
 	let url = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=${genre}`;
 	
@@ -81,69 +85,68 @@ const searchMovieByGenre = (genre) => {
 	});
 };
 
+const displayMoviesGenre = (movies) => {
 	
-	const displayMoviesGenre = (movies) => {
-		
-		movies.forEach(movie => {
-			if (movie.poster_path) {
+	movies.forEach(movie => {
+		if (movie.poster_path) {
 
-                const movieShow = document.createElement('div');
-				movieShow.classList.add('moviePhoto');
+			const movieShow = document.createElement('div');
+			movieShow.classList.add('moviePhoto');
 
-				const imageUrl = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+			const imageUrl = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
 
-				movieShow.innerHTML = `
-					<img src="${imageUrl}" data-movie-id="${movie.id}">
-					<p>${movie.title}</p>
-					<p>${movie.overview}</p>
-					<p>${movie.release_date}</p>
-					<p>${searchGenre.value}</p>
-					<p>${movie.title}</p>
-					<a href="https://www.themoviedb.org/movie/${movie.id}">Link</a>
-					<p>${movie.vote_average}</p>
-					<a href="https://www.themoviedb.org/movie/${movie.id}/images/backdrops">Gallery</a>
-					<a href="https://www.themoviedb.org/movie/${movie.id}/videos">Trailer</a>
-					<div>
+			movieShow.innerHTML = `
+				<img src="${imageUrl}" data-movie-id="${movie.id}">
+				<p>${movie.title}</p>
+				<p>${movie.overview}</p>
+				<p>${movie.release_date}</p>
+				<p>${searchGenre.value}</p>
+				<p>${movie.title}</p>
+				<a href="https://www.themoviedb.org/movie/${movie.id}">Link</a>
+				<p>${movie.vote_average}</p>
+				<a href="https://www.themoviedb.org/movie/${movie.id}/images/backdrops">Gallery</a>
+				<a href="https://www.themoviedb.org/movie/${movie.id}/videos">Trailer</a>
+				<div>
 					<input type="number" id="Rate${movie.id}">
 					<button class="btn btn-warning"  onclick="Rate(${movie.id})">Rate</button>
-					</div>`;
-				
-				searchShow.appendChild(movieShow);
-			}
-		});
-	};
-	searchButtonGenre.addEventListener('click', () => {
-						
-			if(searchGenre.value=="Action"){
-				genreValue = 28;
-			}else if(searchGenre.value=="Animation"){
-				genreValue = 16;
-			}else if(searchGenre.value=="Comedy"){
-				genreValue = 35;
-			}else if(searchGenre.value=="Music"){
-				genreValue = 10402;
-			}else if(searchGenre.value=="War"){
-				genreValue = 10752;
-			}
-
-		searchMovieByGenre(genreValue);
+				</div>`;
+			
+			searchShow.appendChild(movieShow);
+		}
 	});
+};
+searchButtonGenre.addEventListener('click', () => {
+					
+		if(searchGenre.value=="Action"){
+			genreValue = 28;
+		}else if(searchGenre.value=="Animation"){
+			genreValue = 16;
+		}else if(searchGenre.value=="Comedy"){
+			genreValue = 35;
+		}else if(searchGenre.value=="Music"){
+			genreValue = 10402;
+		}else if(searchGenre.value=="War"){
+			genreValue = 10752;
+		}
 
-	fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`)
-		.then(response => {
-			if (response.ok) {
-				return response.json();
-			}
-			throw new Error('Network response was not ok.');
-		})
-		.then(data => {
-			displayPopularMovies(data.results);
-		})
-		.catch(error => {
-			console.error('There has been a problem with your fetch operation:', error);
-		});
+	searchMovieByGenre(genreValue);
+});
 
+fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`)
+	.then(response => {
+		if (response.ok) {
+			return response.json();
+		}
+		throw new Error('Cos zle.');
+	})
+	.then(data => {
+		displayPopularMovies(data.results);
+	})
+	.catch(error => {
+		console.error('Cos zle zrobione:', error);
+});
 
+//dodawanie oceny
 const Rate = (id) =>{
 		
 	let rating = document.getElementById("Rate"+id).value;
@@ -166,6 +169,8 @@ const Rate = (id) =>{
 	.catch(err => console.error(err));
 	}
 }
+
+//wyswietlanie top5 filmow
 const displayPopularMovies = (movies) => {
 	movies.slice(0, 5).forEach(movie => {
 		if (movie.poster_path) {
@@ -182,3 +187,8 @@ const displayPopularMovies = (movies) => {
 		}
 	});
 };
+
+
+
+
+
